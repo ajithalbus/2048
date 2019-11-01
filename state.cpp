@@ -79,7 +79,8 @@ void State::putStack(std::vector<int> stack,int tab,Direction direction,Order or
 }
 
 int State::moveUp(){
-
+    
+    std::vector<int> before(flat_values,flat_values+GRID_SIZE);
     int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
@@ -87,11 +88,14 @@ int State::moveUp(){
         score += runGravity(stack);
         putStack(stack,i,VERTICAL,FORWARD);
     }
-    drop();
+    std::vector<int> after(flat_values,flat_values+GRID_SIZE);
+    if(before != after) 
+        drop();
     return score;
 }
 int State::moveDown(){
 
+    std::vector<int> before(flat_values,flat_values+GRID_SIZE);
     int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
@@ -99,12 +103,15 @@ int State::moveDown(){
         score += runGravity(stack);
         putStack(stack,i,VERTICAL,REVERSE);
     }
-    drop();
+    std::vector<int> after(flat_values,flat_values+GRID_SIZE);
+    if(before != after) 
+        drop();
     return score;
 }
 
 int State::moveRight(){
 
+    std::vector<int> before(flat_values,flat_values+GRID_SIZE);
     int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
@@ -112,11 +119,14 @@ int State::moveRight(){
         score += runGravity(stack);
         putStack(stack,i,HORIZONTAL,REVERSE);
     }
-    drop();
+    std::vector<int> after(flat_values,flat_values+GRID_SIZE);
+    if(before != after) 
+        drop();
     return score;
 }
 int State::moveLeft(){
 
+    std::vector<int> before(flat_values,flat_values+GRID_SIZE);
     int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
@@ -124,8 +134,8 @@ int State::moveLeft(){
         score += runGravity(stack);
         putStack(stack,i,HORIZONTAL,FORWARD);
     }
-    drop();
+    std::vector<int> after(flat_values,flat_values+GRID_SIZE);
+    if(before != after) 
+        drop();
     return score;
 }
-
-
