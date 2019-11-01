@@ -6,8 +6,10 @@ using namespace std;
 
 int main(){
     State state;
-    cout<<"hello";
     initSeed();
+    state.init();
+    state.render();
+    cout<<"\n";
     for(int i =0 ;i<10;i++)
-        cout<<get2or4();
+        cout<<getRandomEmptyCell(state.flat_values)<<'\n';
 }

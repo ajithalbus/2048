@@ -19,7 +19,27 @@ int rand_int(int a, int b) {
 void initSeed(){
     srand((long)time(NULL));
 }
-int getRandomEmptyCell(int const *flat_values);
+
+int getEmptyCellCount(int const *flat_values){
+    return std::count(flat_values,flat_values+GRID_SIZE,0);
+}
+
+int getRandomEmptyCell(int const *flat_values){
+    int noOfEmptyCells = getEmptyCellCount(flat_values);
+    int luckyNthEmptyCell = rand_int(0,noOfEmptyCells-1);
+    
+    for(int i = 0;i < GRID_SIZE;i++){
+        if(flat_values[i] == 0){
+            if(luckyNthEmptyCell == 0)
+                return i;
+            else
+                luckyNthEmptyCell--;
+        }
+    }
+    
+    return -1;
+}
+
 
 int get2or4(){
     double toss = rand_double();
