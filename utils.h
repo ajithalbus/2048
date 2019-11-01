@@ -13,4 +13,4 @@ typedef enum {
 int getRandomEmptyCell(int const *flat_values);
 int get2or4(); 
 void initSeed();
-void runGravity(std::vector<int> &stack);
+int runGravity(std::vector<int> &stack);

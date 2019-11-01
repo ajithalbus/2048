@@ -16,29 +16,41 @@ void Game::play(){
         state->init();
     }
 
+    printw("PRESS ANY KEY TO START");
+    refresh();
+
     while(state->isWon() || state->isJam()){
        int  c = 0;
 
         switch((c=getch())) {
         case KEY_UP:
-            state->moveUp();
+            score += state->moveUp();
             break;
         case KEY_DOWN:
-            state->moveDown();
+            score += state->moveDown();
             break;
         case KEY_LEFT:
-            state->moveLeft();
+            score += state->moveLeft();
             break;
         case KEY_RIGHT:
-            state->moveRight();
+            score += state->moveRight();
             break;
         default:
             break;
         }
         clear();
+        printw("SCORE : %5d\n",score);
         state->render();
+        
         refresh();
     }
+
+    if(state->isWon()){
+        printw("YOU WON!!!\n");
+    }
+    else
+        printw("YOU LOST!!!\n");
+    refresh();
 
     delete state;
     state = NULL;

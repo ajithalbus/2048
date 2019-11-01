@@ -38,7 +38,7 @@ bool State::isJam(){
 void State::render(){
     for (int i = 0; i < BOARD_DIM; i++)
        for (int j = 0; j < BOARD_DIM; j++)
-           printw("%i%c",values[i][j]," \n"[j == BOARD_DIM-1]); 
+           printw("%4i%c",values[i][j]," \n"[j == BOARD_DIM-1]); 
 }
 
 std::vector<int> State::getStack(int tab,Direction direction, Order order){
@@ -79,45 +79,53 @@ void State::putStack(std::vector<int> stack,int tab,Direction direction,Order or
 }
 
 int State::moveUp(){
+
+    int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
         std::vector<int> stack = getStack(i,VERTICAL,FORWARD);
-        runGravity(stack);
+        score += runGravity(stack);
         putStack(stack,i,VERTICAL,FORWARD);
     }
     drop();
-    return 0;
+    return score;
 }
 int State::moveDown(){
+
+    int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
         std::vector<int> stack = getStack(i,VERTICAL,REVERSE);
-        runGravity(stack);
+        score += runGravity(stack);
         putStack(stack,i,VERTICAL,REVERSE);
     }
     drop();
-    return 0;
+    return score;
 }
 
 int State::moveRight(){
+
+    int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
         std::vector<int> stack = getStack(i,HORIZONTAL,REVERSE);
-        runGravity(stack);
+        score += runGravity(stack);
         putStack(stack,i,HORIZONTAL,REVERSE);
     }
     drop();
-    return 0;
+    return score;
 }
 int State::moveLeft(){
+
+    int score = 0;
     
     for(int i = 0 ;i < BOARD_DIM;i++){
         std::vector<int> stack = getStack(i,HORIZONTAL,FORWARD);
-        runGravity(stack);
+        score += runGravity(stack);
         putStack(stack,i,HORIZONTAL,FORWARD);
     }
     drop();
-    return 0;
+    return score;
 }
 
 
