@@ -1,11 +1,8 @@
-#include <iostream>
-#include "setting.h"
-#include "state.h"
-using namespace std;
-
-
+#include "utils.h"
+#include "game.h"
 
 int main(){
-    State state;
-cout<<"hello";
+    initSeed();
+    Game game;
+    game.play();
 }
