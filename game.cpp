@@ -19,7 +19,7 @@ void Game::play(){
     printw("PRESS ANY KEY TO START");
     refresh();
 
-    while(state->isWon() || state->isJam()){
+    while(!state->isWon() || !state->isJam()){
        int  c = 0;
 
         switch((c=getch())) {
