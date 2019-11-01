@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 double rand_double() {
    return rand()/(double)RAND_MAX;
@@ -46,4 +47,7 @@ int get2or4(){
     if (toss < PROB2)
         return 2;
     return 4; 
+}
+
+void runGravity(std::vector<int> &stack){
 }
