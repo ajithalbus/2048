@@ -5,7 +5,6 @@
 class State{
 
     int values[BOARD_DIM][BOARD_DIM];
-    public : 
     int *flat_values;
     void set(int position,int value);
     void drop();
