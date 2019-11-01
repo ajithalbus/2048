@@ -10,6 +10,7 @@ int main(){
     state.init();
     state.render();
     cout<<"\n";
-    for(int i =0 ;i<10;i++)
-        cout<<getRandomEmptyCell(state.flat_values)<<'\n';
+    //for(int i =0 ;i<10;i++)
+        state.moveLeft();
+        state.render();
 }

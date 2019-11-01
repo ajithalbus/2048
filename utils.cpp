@@ -50,4 +50,14 @@ int get2or4(){
 }
 
 void runGravity(std::vector<int> &stack){
+    std::fill(std::remove(stack.begin(),stack.end(),0),stack.end(),0);
+
+    for(int i = 1;i < stack.size();i++){
+        if(stack[i] == stack[i-1]){
+            stack[i-1]*=2;
+            stack[i]=0;
+        }
+    }
+
+    std::fill(std::remove(stack.begin(),stack.end(),0),stack.end(),0);
 }

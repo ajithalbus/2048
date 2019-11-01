@@ -42,10 +42,39 @@ void State::render(){
 
 std::vector<int> State::getStack(int tab,Direction direction, Order order){
     std::vector<int> stack;
+    if(direction == HORIZONTAL){
+        stack.insert(stack.begin(),values[tab],values[tab]+BOARD_DIM);
+    }
+    else{
+        for(int i = 0;i < BOARD_DIM;i++){
+            stack.push_back(values[i][tab]);
+        }
+    }
+        
+    if(order == REVERSE){
+        std::reverse(stack.begin(),stack.end());
+    }
+        
     return stack;
 }
 
 void State::putStack(std::vector<int> stack,int tab,Direction direction,Order order){
+
+    if(order == REVERSE){
+        std::reverse(stack.begin(),stack.end());
+    }
+    if(direction == HORIZONTAL){
+        for(int i = 0;i < BOARD_DIM;i++){
+            values[tab][i]=stack[i];
+        }
+    }
+    else{
+        for(int i = 0;i < BOARD_DIM;i++){
+            values[i][tab]=stack[i];
+        }
+    }
+        
+        
 }
 
 
