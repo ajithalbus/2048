@@ -1,12 +1,11 @@
 #include <iostream>
-#include "setting.h"
-#include "state.h"
 #include "utils.h"
+#include "game.h"
 using namespace std;
 
 int main(){
-    State state;
     initSeed();
+    /*State state;
     state.init();
     state.render();
     cout<<"\n";
@@ -19,5 +18,8 @@ int main(){
         
         state.render();
         state.moveDown();
-        state.render();
+        state.render();*/
+
+    Game game;
+    game.play();
 }

@@ -1,7 +1,7 @@
 #include <vector>
 #include "setting.h"
 #include "utils.h"
-
+#pragma once
 class State{
 
     int values[BOARD_DIM][BOARD_DIM];

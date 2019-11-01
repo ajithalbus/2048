@@ -1,3 +1,4 @@
+#include <ncurses.h>
 #include <iostream>
 #include <vector>
 #include "state.h"
@@ -37,8 +38,7 @@ bool State::isJam(){
 void State::render(){
     for (int i = 0; i < BOARD_DIM; i++)
        for (int j = 0; j < BOARD_DIM; j++)
-           std::cout << values[i][j] << " \n"[j == BOARD_DIM-1]; 
-    std::cout<<"\n";
+           printw("%i%c",values[i][j]," \n"[j == BOARD_DIM-1]); 
 }
 
 std::vector<int> State::getStack(int tab,Direction direction, Order order){
@@ -85,6 +85,7 @@ int State::moveUp(){
         runGravity(stack);
         putStack(stack,i,VERTICAL,FORWARD);
     }
+    drop();
     return 0;
 }
 int State::moveDown(){
@@ -94,6 +95,7 @@ int State::moveDown(){
         runGravity(stack);
         putStack(stack,i,VERTICAL,REVERSE);
     }
+    drop();
     return 0;
 }
 
@@ -104,6 +106,7 @@ int State::moveRight(){
         runGravity(stack);
         putStack(stack,i,HORIZONTAL,REVERSE);
     }
+    drop();
     return 0;
 }
 int State::moveLeft(){
@@ -113,6 +116,7 @@ int State::moveLeft(){
         runGravity(stack);
         putStack(stack,i,HORIZONTAL,FORWARD);
     }
+    drop();
     return 0;
 }
 
