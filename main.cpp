@@ -13,4 +13,11 @@ int main(){
     //for(int i =0 ;i<10;i++)
         state.moveLeft();
         state.render();
+        state.moveUp();
+        state.render();
+        state.moveRight();
+        
+        state.render();
+        state.moveDown();
+        state.render();
 }

@@ -38,6 +38,7 @@ void State::render(){
     for (int i = 0; i < BOARD_DIM; i++)
        for (int j = 0; j < BOARD_DIM; j++)
            std::cout << values[i][j] << " \n"[j == BOARD_DIM-1]; 
+    std::cout<<"\n";
 }
 
 std::vector<int> State::getStack(int tab,Direction direction, Order order){
@@ -77,7 +78,34 @@ void State::putStack(std::vector<int> stack,int tab,Direction direction,Order or
         
 }
 
+int State::moveUp(){
+    
+    for(int i = 0 ;i < BOARD_DIM;i++){
+        std::vector<int> stack = getStack(i,VERTICAL,FORWARD);
+        runGravity(stack);
+        putStack(stack,i,VERTICAL,FORWARD);
+    }
+    return 0;
+}
+int State::moveDown(){
+    
+    for(int i = 0 ;i < BOARD_DIM;i++){
+        std::vector<int> stack = getStack(i,VERTICAL,REVERSE);
+        runGravity(stack);
+        putStack(stack,i,VERTICAL,REVERSE);
+    }
+    return 0;
+}
 
+int State::moveRight(){
+    
+    for(int i = 0 ;i < BOARD_DIM;i++){
+        std::vector<int> stack = getStack(i,HORIZONTAL,REVERSE);
+        runGravity(stack);
+        putStack(stack,i,HORIZONTAL,REVERSE);
+    }
+    return 0;
+}
 int State::moveLeft(){
     
     for(int i = 0 ;i < BOARD_DIM;i++){
