@@ -3,9 +3,7 @@
 #include "state.h"
 using namespace std;
 
-
-
 int main(){
     State state;
-cout<<"hello";
+    cout<<"hello";
 }
