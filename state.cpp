@@ -30,7 +30,7 @@ bool State::isWon(){
 }
 
 bool State::isJam(){
-    if(std::count(flat_values,flat_values+GRID_SIZE,0) != 0)
+    if(std::count(flat_values,flat_values+GRID_SIZE,0) == 0)
         return true;
     return false;
 }

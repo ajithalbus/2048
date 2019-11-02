@@ -45,10 +45,9 @@ void Game::play(){
         refresh();
     }
 
-    if(state->isWon()){
+    if(state->isWon())
         printw("YOU WON!!!\n");
-    }
-    else
+    if(state->isJam())
         printw("YOU LOST!!!\n");
     refresh();
 
