@@ -19,7 +19,7 @@ void Game::play(){
     printw("PRESS ANY KEY TO START");
     refresh();
 
-    while(!state->isWon() || !state->isJam()){
+    while(!state->isWon() && !state->isJam()){
        int  c = 0;
 
         switch((c=getch())) {
@@ -45,10 +45,9 @@ void Game::play(){
         refresh();
     }
 
-    if(state->isWon()){
+    if(state->isWon())
         printw("YOU WON!!!\n");
-    }
-    else
+    if(state->isJam())
         printw("YOU LOST!!!\n");
     refresh();
 
