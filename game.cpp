@@ -10,6 +10,14 @@ Game::Game(){
     cbreak();
 }
 
+int sendInput(int i){
+    switch(i%4){
+        case 0: return KEY_UP;
+        case 1: return KEY_RIGHT;
+        case 2: return KEY_DOWN;
+        case 3: return KEY_LEFT;
+    }
+}
 void Game::play(){
     if(state == NULL){
         state = new State;
@@ -18,11 +26,11 @@ void Game::play(){
 
     printw("PRESS ANY KEY TO START");
     refresh();
-
+    int i=0;
     while(!state->isWon() && !state->isJam()){
        int  c = 0;
 
-        switch((c=getch())) {
+        switch((c=sendInput(i))) {
         case KEY_UP:
             score += state->moveUp();
             break;
@@ -43,6 +51,7 @@ void Game::play(){
         state->render();
         
         refresh();
+        i++;
     }
 
     if(state->isWon())
