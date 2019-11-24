@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "setting.h"
 #include "utils.h"
 #include <iostream>
